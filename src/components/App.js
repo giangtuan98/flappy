@@ -1,11 +1,18 @@
 import React from 'react';
 import Game from './Game';
+import { Provider } from "react-redux";
+import configureStore from '../redux/configureStore';
+
+const store = configureStore();
 
 function App() {
   return (
-    <div className="App">
-      <Game />
-    </div>
+    <Provider store={store} >
+      <div className="App">
+        <Game />
+      </div>
+    </Provider>
+    
   );
 }
 

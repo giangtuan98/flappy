@@ -1,37 +1,53 @@
 import React from 'react';
-
+import {connect} from 'react-redux'
 import TopPipeImage from '../images/pipe-top.png';
 import BottomPipeImage from '../images/pipe-bottom.png';
 
-const Pipe = () => {
+const Pipe = ({pipe}) => {
+  let x = 0;
   return (
     <div
     style={{
       position: 'relative',
     }}
     >
-      <div
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 150,
-        width: 52,
-        height: 200,
-        background: `url(${TopPipeImage})`,
-        backgroundPosition: 'bottom',
-      }}></div>
-      <div
-      style={{
-        position: 'absolute',
-        top: 300,
-        left: 150,
-        width: 52,
-        height: 200,
-        background: `url(${BottomPipeImage})`
-      }}
-      ></div>
+    {
+      pipe.map((p, i) => (
+        <div key={`${i}wp`}>
+        <div
+          key={`${i}t`}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: p.x,
+            width: 52,
+            height: p.topHeight,
+            background: `url(${TopPipeImage})`,
+            backgroundPosition: 'bottom',
+            transition: 'left 200ms'
+          }}></div>
+          <div
+          key={`${i}b`}
+          style={{
+            position: 'absolute',
+            top: p.topHeight + 100,
+            left: p.x,
+            width: 52,
+            height: 512 - (p.topHeight+100),
+            background: `url(${BottomPipeImage})`,
+            transition: 'left 200ms'
+          }}
+          ></div>
+        </div>
+          
+        )
+      )
+    }
+      
     </div>
   )
 }
 
-export default Pipe
+const mapStateToProps = ({pipe}) => ({pipe: pipe});
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(Pipe)
