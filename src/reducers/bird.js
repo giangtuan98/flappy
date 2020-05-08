@@ -10,7 +10,7 @@ export default (state = initialState, {type} = {}) => {
      
   switch (type) {
     case birdConstants.FLY:  
-      let x = state.y - 80 < 0 ? 0 : state.y - 80; 
+      let x = state.y - 65 < 0 ? 0 : state.y - 65; 
       return {...state, y: x, r: -20 }
     case birdConstants.FALL:
       let y = state.y + 20 > 380 ? 380 : state.y + 20;

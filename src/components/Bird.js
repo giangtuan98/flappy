@@ -17,7 +17,7 @@ const Bird = ({y, r, gameActions}) => {
       height: 26,
       background: `url(${BirdImage})`,
       transform: `rotate(${r}deg)`,
-      transition: `transform 200ms, top 200ms`,
+      transition: `transform 150ms, top 150ms`,
     }}
     >
 

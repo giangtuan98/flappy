@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
       let last = state[state.length-1];
       if (last.x < 288) {
         let next = {
-          topHeight : Math.floor(Math.random()*250),
+          topHeight : Math.floor(Math.random()*200) + 50,
           x : state[state.length-1].x + 200
         };
         newState = [...state, { ...next }];

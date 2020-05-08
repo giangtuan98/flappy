@@ -76,10 +76,33 @@ const Game = ({game, background, bird, gameAction, birdAction, pipeAction, pipe,
   }, [status, stt]);
   
   useEffect(() => {
-    if (y === 380) {
+    if (y >= 380) {
       stt.current = 'end';
       end();
     }
+    let check = pipe.map((p, i) => {
+      return {
+        x1: p.topHeight,
+        y1: p.x,
+        x2: p.topHeight + 120,
+        y2: p.x
+      }
+    }).filter((c) => {
+      return c.y1 <= 120 && c.y1 + 54 >= 120 
+    });
+    console.log(check);
+    if (check.length > 0) {
+      const {x1, x2, y1, y2} = check[0];
+      if (
+        y <= x1 || y >= x2 
+      ) {
+        stt.current = 'end';
+        end();
+    }
+    }
+
+    
+    
     return () => {
       
     };

@@ -30,10 +30,10 @@ const Pipe = ({pipe}) => {
           key={`${i}b`}
           style={{
             position: 'absolute',
-            top: p.topHeight + 100,
+            top: p.topHeight + 120,
             left: p.x,
             width: 52,
-            height: 512 - (p.topHeight+100),
+            height: 512 - (p.topHeight+120),
             background: `url(${BottomPipeImage})`,
             transition: 'left 200ms'
           }}
